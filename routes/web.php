@@ -11,8 +11,12 @@ Route::get('/', function () {
 Route::get('/register', function () {
     return view('register');
 });
+Route::post('/register', function () {
+    return view('landing');
+})->name('register');
 
-Route::group(['prefix' => 'admin'], function (){
+
+Route::group(['prefix' => 'admin'], function () {
     Route::get('/', function () {
         return view('admin.dashboard');
     })->name('admin.dashboard');
@@ -23,6 +27,4 @@ Route::group(['prefix' => 'admin'], function (){
 
     Route::get('/users/{id}/remove', [UsersController::class, 'remove'])->name('admin.users.remove');
     Route::post('/users/{id}', [UsersController::class, 'remove'])->name('admin.users.delete');
-
-    
 });
