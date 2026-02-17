@@ -1,0 +1,29 @@
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Http\Requests\User\RegisterUserRequest;
+use App\Services\SupabaseAuthService;
+
+
+class UsersController extends Controller
+{
+    public function register(RegisterUserRequest $request, SupabaseAuthService $supabase)
+    {
+        $response = $supabase->signUp(
+            $request->email, 
+            $request->password,
+            $request->username
+        );
+
+        if (isset($response['error_description']) || isset($response['error'])) {
+            return back()->withInput()->withErrors([
+                'supabase' => $response['error_description'] ?? $response['error']['message']
+            ]);
+        }
+       
+        return redirect()->route('landingPage')->with('success', 'Conta criada!');
+    }
+}
