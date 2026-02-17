@@ -44,7 +44,7 @@
         <div class="flex flex-col items-center gap-4">
             <div class="relative w-full">
                 <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                    <img class="w-5 h-5 opacity-30" src="{{ asset('images/icon.png') }}" alt="User Icon">
+                    <img class="w-5 h-5 opacity-30" src="{{ asset('images/icons/icon.png') }}" alt="User Icon">
                 </div>
                 <input type="text" name="name" placeholder="Usuario" 
                     class="w-full flex items-center py-2 rounded-2xl bg-[#D9D9D9] border-none text-center placeholder:text-black/30">
@@ -52,7 +52,7 @@
 
             <div class="relative w-full">
                 <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                    <img class="w-5 h-5 opacity-30" src="{{ asset('images/lock.png') }}" alt="Lock Icon">
+                    <img class="w-5 h-5 opacity-30" src="{{ asset('images/icons/lock.png') }}" alt="Lock Icon">
                 </div>
                 <input type="password" name="password" placeholder="Senha" 
                     class="w-full flex items-center py-2 rounded-2xl bg-[#D9D9D9] border-none text-center placeholder:text-black/30">

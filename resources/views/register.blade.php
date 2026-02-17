@@ -8,7 +8,7 @@
 
         <header class='flex items-center justify-between px-5 py-3'>
             <div class='flex items-center'>
-                <img class='h-20 w-20' src="{{ asset('images/logo.svg') }}" alt="GoskiLogo">
+                <img class='h-20 w-20' src="{{ asset('images/icons/logo.svg') }}" alt="GoskiLogo">
                 <h1 class='ml-2 text-5xl'>GOSKI</h1>
             </div>
 
@@ -38,38 +38,50 @@
                             <div class="flex flex-col items-center gap-4">
                                 <div class="relative w-full">
                                     <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                                        <img class="h-5 w-5 opacity-30" src="{{ asset('images/icon.png') }}"
+                                        <img class="h-5 w-5 opacity-30" src="{{ asset('images/icons/icon.png') }}"
                                             alt="User Icon">
                                     </div>
                                     <input type="text" name="name" placeholder="Usuario"
                                         class="flex w-full items-center rounded-2xl border-none bg-[#D9D9D9] py-2 text-center placeholder:text-black/30">
+                                        @error('name')
+                                            <p class="text-red-500 text-xs mt-4 mb-4">{{ $message }}</p>
+                                        @enderror
                                 </div>
 
                                 <div class="relative w-full">
                                     <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                                        <img class="h-5 w-5 opacity-30" src="{{ asset('images/email.png') }}"
+                                        <img class="h-5 w-5 opacity-30" src="{{ asset('images/icons/email.png') }}"
                                             alt="Email Icon">
                                     </div>
                                     <input type="email" name="email" placeholder="Email"
                                         class="flex w-full items-center rounded-2xl border-none bg-[#D9D9D9] py-2 text-center placeholder:text-black/30">
+                                        @error('email')
+                                            <p class="text-red-500 text-xs mt-4 mb-4">{{ $message }}</p>
+                                        @enderror
                                 </div>
 
                                 <div class="relative w-full">
                                     <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                                        <img class="h-5 w-5 opacity-30" src="{{ asset('images/lock.png') }}"
+                                        <img class="h-5 w-5 opacity-30" src="{{ asset('images/icons/lock.png') }}"
                                             alt="Lock Icon">
                                     </div>
                                     <input type="password" name="password" placeholder="Senha"
                                         class="flex w-full items-center rounded-2xl border-none bg-[#D9D9D9] py-2 text-center placeholder:text-black/30">
+                                        @error('password')
+                                            <p class="text-red-500 text-xs mt-4 mb-4">{{ $message }}</p>
+                                        @enderror
                                 </div>
 
                                 <div class="relative w-full">
                                     <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                                        <img class="h-5 w-5 opacity-30" src="{{ asset('images/lock.png') }}"
+                                        <img class="h-5 w-5 opacity-30" src="{{ asset('images/icons/lock.png') }}"
                                             alt="Lock Icon">
                                     </div>
                                     <input type="password" name="password_confirmation" placeholder="Confirme sua senha"
                                         class="flex w-full items-center rounded-2xl border-none bg-[#D9D9D9] py-2 text-center placeholder:text-black/30">
+                                        @error('password_confirmation')
+                                            <p class="text-red-500 text-xs mt-4 mb-4">{{ $message }}</p>
+                                        @enderror
                                 </div>
 
                                 <button type="submit"

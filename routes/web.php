@@ -13,7 +13,7 @@ Route::get('/register', function () {
 });
 Route::post('/register', function () {
     return view('landing');
-})->name('register');
+})->name('user.register');
 
 
 Route::group(['prefix' => 'admin'], function () {
