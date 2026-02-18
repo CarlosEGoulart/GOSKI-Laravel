@@ -11,10 +11,10 @@ class RegisterUserRequest extends FormRequest
         return true;
     }
 
-    public function rules():bool
+    public function rules():array
     {
         return [
-            'name' => 'required|string:max:255',
+            'username' => 'required|unique:users,name|string:max:255',
             'email' => 'required|email:rfc.dns',
             'password' => 'required|min:6'
             'password_confirmation' => 'required|same:password'

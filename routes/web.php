@@ -6,7 +6,10 @@ use App\Http\Controllers\Admin\UsersController;
 
 Route::get('/', function () {
     return view('landing');
-});
+})->name('landingPage');
+
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/login', [AuthController::class, 'authenticate'])->name('authenticate')
 
 Route::get('/register', function () {
     return view('register');
