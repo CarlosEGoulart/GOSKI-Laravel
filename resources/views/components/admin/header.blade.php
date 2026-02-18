@@ -9,6 +9,11 @@
     </div>
 
     <div class='flex justify-between gap-5'>
-        <a href="/"> <img src="images/icons/exit.png" alt="Sair"></a>
+        <form action="{{  route('logout') }}" method="POST" class="flex items-center gap-2 cursor-pointer">
+            @csrf
+            <button class="cursor-pointer">
+                <img src="images/icons/exit.png" alt="Sair">
+            </button>
+        </form>
     </div>
 </header> 
