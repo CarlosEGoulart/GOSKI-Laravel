@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UsersController;
+use App\Http\Controllers\AuthController;
 
 
 Route::get('/', function () {
@@ -12,9 +13,7 @@ Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'authenticate'])->name('authenticate');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('/register', function () {
-    return view('register');
-});
+Route::get('/register', function () { return view('register'); });
 Route::post('/register', function () {
     return view('landing');
 })->name('user.register');

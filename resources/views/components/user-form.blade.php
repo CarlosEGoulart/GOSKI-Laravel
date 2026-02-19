@@ -9,10 +9,10 @@
                 <input type="text" name="username" placeholder="Usuario"
                     value="{{ old('username', $user['username'] ?? '') }}"
                     class="flex w-full items-center rounded-2xl border-none bg-[#D9D9D9] py-2 text-center placeholder:text-black/30">
+                </div>
                 @error('username')
-                    <p class="text-red-500 text-xs mt-4 mb-4">{{ $message }}</p>
+                    <p class="text-red-500 text-xs">{{ $message }}</p>
                 @enderror
-            </div>
 
             <div class="relative w-full">
                 <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
@@ -21,22 +21,21 @@
                 <input type="email" name="email" placeholder="Email"
                     value="{{ old('email', $user['email'] ?? '') }}"
                     class="flex w-full items-center rounded-2xl border-none bg-[#D9D9D9] py-2 text-center placeholder:text-black/30">
+                </div>
                 @error('email')
-                    <p class="text-red-500 text-xs mt-4 mb-4">{{ $message }}</p>
+                    <p class="text-red-500 text-xs">{{ $message }}</p>
                 @enderror
-            </div>
 
             <div class="relative w-full">
                 <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                     <img class="h-5 w-5 opacity-30" src="{{ asset('images/icons/lock.png') }}" alt="Lock Icon">
                 </div>
-                <input type="password" name="password" placeholder="Senha" 
-                    value="{{ old('password') }}"
+                <input type="password" name="password" placeholder="Senha" value="{{ old('password') }}"
                     class="flex w-full items-center rounded-2xl border-none bg-[#D9D9D9] py-2 text-center placeholder:text-black/30">
+                </div>
                 @error('password')
-                    <p class="text-red-500 text-xs mt-4 mb-4">{{ $message }}</p>
+                    <p class="text-red-500 text-xs">{{ $message }}</p>
                 @enderror
-            </div>
 
             <div class="relative w-full">
                 <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
@@ -45,10 +44,10 @@
                 <input type="password" name="password_confirmation" placeholder="Confirme sua senha"
                     value="{{ old('password_confirmation') }}"
                     class="flex w-full items-center rounded-2xl border-none bg-[#D9D9D9] py-2 text-center placeholder:text-black/30">
+                </div>
                 @error('password_confirmation')
-                    <p class="text-red-500 text-xs mt-4 mb-4">{{ $message }}</p>
+                    <p class="text-red-500 text-xs">{{ $message }}</p>
                 @enderror
-            </div>
 
             <button type="submit"
                 class="mt-2 w-3/4 cursor-pointer rounded-2xl bg-[#1000FF] px-8 py-2 font-bold text-white shadow-md transition duration-200 hover:bg-blue-700">

@@ -52,10 +52,10 @@
                                 <input type="text" name="username" placeholder="Usuario"
                                     value="{{ old('username', $user['username'] ?? '') }}"
                                     class="w-full flex items-center py-2 rounded-2xl bg-[#D9D9D9] border-none text-center placeholder:text-black/30">
+                                </div>
                                 @error('username')
-                                    <p class="text-red-500 text-xs mt-4 mb-4">{{ $message }}</p>
+                                    <p class="text-red-500 text-xs">{{ $message }}</p>
                                 @enderror
-                            </div>
 
                             <div class="relative w-full">
                                 <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -64,10 +64,10 @@
                                 </div>
                                 <input type="password" name="password" placeholder="Senha"
                                     class="w-full flex items-center py-2 rounded-2xl bg-[#D9D9D9] border-none text-center placeholder:text-black/30">
+                                </div>
                                 @error('password')
-                                    <p class="text-red-500 text-xs mt-4 mb-4">{{ $message }}</p>
+                                    <p class="text-red-500 text-xs">{{ $message }}</p>
                                 @enderror
-                            </div>
 
                             <button type="submit"
                                 class="w-3/4 mt-2 bg-[#1000FF] text-white font-bold py-2 px-8 rounded-2xl hover:bg-blue-700 transition duration-200 shadow-md cursor-pointer">

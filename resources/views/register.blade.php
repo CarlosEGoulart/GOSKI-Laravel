@@ -1,4 +1,3 @@
-<h1></h1>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -32,7 +31,10 @@
                     Crie sua conta.
                 </h3>
 
-                <x-user-form>
+                <x-user-form />
             </div>
         </div>
+    </div>
 </body>
+
+</html>
