@@ -1,4 +1,4 @@
-<header class='flex items-center justify-between px-5 py-3'>
+<header class='flex justify-between items-center px-5 py-3'>
     
     <div class='flex items-center'>
         <a href='/' class='flex items-center'> 
@@ -8,11 +8,11 @@
     </div>
 
     <div class='flex justify-between gap-5'>
-        <a href='/create'> <img class='w-10 h-10' src="{{ asset('images/icons/add.png') }} alt="Adicionar"></a>
+        <a href='#'> <img class='w-10 h-10' src="{{ asset('images/icons/add.png') }} alt="Adicionar"></a>
 
-        <a href='/notifications'> <img class='w-10 h-10' src="{{ asset('images/icons/bell.png') }} alt="Notificações"></a>
+        <a href='#'> <img class='w-10 h-10' src="{{ asset('images/icons/bell.png') }} alt="Notificações"></a>
 
-        <a href='/logout'> <img class='w-10 h-10' src="{{ asset('images/icons/exit.png') }} alt="Deslogar"></a>
+        <x-menu/>
     </div>
 
 </header>
