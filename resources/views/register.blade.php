@@ -3,31 +3,33 @@
 
 @include('shared.head')
 
-<body class='flex min-h-screen flex-col bg-[#ECECEC]'>
+<body class='flex flex-col bg-[#ECECEC] min-h-screen'>
 
-    <header class='flex items-center justify-between px-5 py-3'>
+    <header class='flex justify-between items-center px-5 py-3'>
         <div class='flex items-center'>
-            <img class='h-20 w-20' src="{{ asset('images/logo.svg') }}" alt="GoskiLogo">
-            <h1 class='ml-2 text-5xl'>{{ env('APP_NAME') }}</h1>
+            <a href='/' class='flex items-center'> 
+                <img class='w-20 h-20' src="{{ asset('images/logo.svg') }}" alt="GoskiLogo">
+                <h1 class='ml-2 text-5xl'>{{ env('APP_NAME') }}</h1>
+            </a>
         </div>
 
-        <a href="/login" class='text-2xl font-bold'>Faça seu login.</a>
+        <a href="/login" class='font-bold text-2xl'>Faça seu login.</a>
     </header>
 
     <div class="flex justify-center">
-        <div class="flex w-full max-w-fit flex-col items-start">
-            <div class="flex flex-col items-start justify-center gap-3 py-24">
-                <div class="pb-8 text-start text-5xl font-normal leading-tight">
+        <div class="flex flex-col items-start w-full max-w-fit">
+            <div class="flex flex-col justify-center items-start gap-3 py-24">
+                <div class="pb-8 font-normal text-5xl text-start leading-tight">
                     <h2>Crie sua conta e se</h2>
                     <p>
                         <span
-                            class="bg-linear-to-r from-[#FF0000] via-[#AF054D] to-[#1B0EDB] bg-clip-text text-transparent">
+                            class="bg-clip-text bg-linear-to-r from-[#FF0000] via-[#AF054D] to-[#1B0EDB] text-transparent">
                             expresse.
                         </span>
                     </p>
                 </div>
 
-                <h3 class="text-center text-xl font-bold">
+                <h3 class="font-bold text-xl text-center">
                     Crie sua conta.
                 </h3>
 

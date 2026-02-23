@@ -3,11 +3,13 @@
 
 @include('shared.head')
 
-<body>
-    <x-header>
+<body class='bg-[#ECECEC] min-h-screen'>
+    <x-header />
 
-    <div class="itens-center justify center mx-auto flex flex-col px-5 py-24">
+    <div class="flex flex-col mx-auto px-5 py-24 itens-center justify center">
         @yield('content')
     </div>
 
 </body>
+
+</html>

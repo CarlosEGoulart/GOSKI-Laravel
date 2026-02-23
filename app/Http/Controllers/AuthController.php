@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Response\RedirectResponse;
 
 class AuthController extends Controller
 {
@@ -15,18 +16,18 @@ class AuthController extends Controller
     public function authenticate(Request $request)
     {
         $credentials = $request->validate([
-            'username' => ['required', 'string'],
+            'email' => ['required', 'string'],
             'password' => ['required'] 
         ]);
 
         if(Auth::attempt($credentials)){
-            $request -> sessions()->regenerate();
+            $request -> session()->regenerate();
 
             return redirect()->intended('landing');
         }
 
         return back()->withErrors([
-            'username' => 'Username not found.',
+            'email' => 'Username not found.',
             'password' => 'Password is incorrect.'
         ])-> onlyInput('username');
 
@@ -36,7 +37,7 @@ class AuthController extends Controller
     {
         Auth::logout();
 
-        $request->session()->invalidade();
+        $request->session()->invalidate();
         
         $request->session()->regenerateToken();
 
