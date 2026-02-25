@@ -19,6 +19,8 @@ return new class extends Migration
             $table->boolean('is_nsfw')->default(false);
             $table->string('moderation_status')->default('pending'); 
             $table->timestamps();
+            
+            $table->foreignId('user_id')->constrained()->unique()->onDelete('cascade');
         });
     }
     

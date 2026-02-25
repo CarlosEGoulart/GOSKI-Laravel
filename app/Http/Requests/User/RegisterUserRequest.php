@@ -18,6 +18,6 @@ class RegisterUserRequest extends FormRequest
             'email' => 'required|email:rfc,dns',
             'password' => 'required|min:6',
             'password_confirmation' => 'required|same:password'
-        ]
+        ];
     }
 }

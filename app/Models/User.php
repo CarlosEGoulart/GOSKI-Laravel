@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+
 
 class User extends Authenticatable
 {
@@ -14,7 +16,12 @@ class User extends Authenticatable
     /**
      * Set to false because Supabase uses UUIDs, not auto-incrementing integers.
      */
-    public $incrementing = false;
+    protected $fillable = [
+        'username',
+        'email',
+        'password',
+        'profile_photo_url'
+    ];
 
     /**
      * The data type of the primary key.
@@ -29,7 +36,6 @@ class User extends Authenticatable
     ];
 
     protected $hidden = [
-        'password',
         'remember_token',
     ];
 
@@ -42,7 +48,27 @@ class User extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
-            'password' => 'hashed',
         ];
     }
+
+    public function posts(): hasMany
+    {
+        return $this->hasMany(Post::class);
+    }
+
+    public function likes(): belongsToMany
+    {
+        return $this->belongsToMany(Like::class);
+    }
+
+    public function followers(): belongsToMany
+    {
+        return $this->belongsToMany(User::class);
+    }
+
+    public function following():belongsToMany
+    {
+        return $this->belongsToMany(User::class);
+    }
+
 }

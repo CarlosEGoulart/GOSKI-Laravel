@@ -16,7 +16,8 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->string('username')->unique();
             $table->string('email')->unique();
-            $table->string('avatar_url')->nullable();
+            $table->string('password');
+            $table->string('profile_photo_url')->nullable();
             $table->timestamps();
             $table->rememberToken();
 
