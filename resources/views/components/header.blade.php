@@ -7,10 +7,10 @@
         </a>
     </div>
 
-    <div class='flex justify-between gap-5'>
-        <a href='#'> <img class='w-10 h-10' src="{{ asset('images/icons/add.png') }} alt="Adicionar"></a>
+    <div class='flex justify-between items-center gap-5'>
+        <a href='#'> <img class="w-8 h-8" src="{{ asset('images/icons/add.png') }}" alt="Adicionar"></a>
 
-        <a href='#'> <img class='w-10 h-10' src="{{ asset('images/icons/bell.png') }} alt="Notificações"></a>
+        <a href='#'> <img class='w-8 h-8' src="{{ asset('images/icons/bell.png') }}" alt="Notificações"></a>
 
         <x-menu/>
     </div>
