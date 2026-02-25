@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Http\Requests\User\RegisterUserRequest;
-use Models\User;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
-
-class UsersController extends Controller
+class UserController extends Controller
 {
     public function register(RegisterUserRequest $request)
     {
@@ -16,9 +15,10 @@ class UsersController extends Controller
         
         $user->username = $request->username;
         $user->email = $request->email;
-        $user->password = $request->password;
-        $user->password_confirmation = $request->password_confirmation;
+        $user->password_hash = Hash::make($request->password);
+
         $user->save();
-        return true;
+        
+        return redirect('feed');
     }
 }
