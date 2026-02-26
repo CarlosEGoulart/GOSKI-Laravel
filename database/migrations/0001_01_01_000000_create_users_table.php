@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('username')->unique();
             $table->string('email')->unique();
-            $table->string('password_hash');
+            $table->string('password');
             $table->string('profile_photo_url')->nullable();
             $table->timestamps();
             $table->rememberToken();
@@ -52,6 +52,3 @@ return new class extends Migration
         Schema::dropIfExists('sessions');
     }
 };
-
-};
-
