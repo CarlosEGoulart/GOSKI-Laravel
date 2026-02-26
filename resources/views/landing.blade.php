@@ -51,7 +51,7 @@
                                     <img class="opacity-30 w-5 h-5" src="{{ asset('images/icons/icon.png') }}"
                                         alt="User Icon">
                                 </div>
-                                <input type="email" name="email" placeholder="Usuario"
+                                <input type="name" name="username" placeholder="Email"
                                     value="{{ old('email', $user['email'] ?? '') }}"
                                     class="flex items-center bg-[#D9D9D9] py-2 border-none rounded-2xl w-full placeholder:text-black/30 text-center">
                             </div>
