@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Response\RedirectResponse;
+use Illuminate\Http\RedirectResponse;
 
 class AuthController extends Controller
 {
@@ -17,11 +17,11 @@ class AuthController extends Controller
     {
         $credentials = $request->validate([
             'username' => ['required'],
-            'password' => ['required'] 
+            'password' => ['required']
         ]);
 
-        if(Auth::attempt($credentials)){
-            $request-> session()->regenerate();
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
 
             return redirect()->intended('feed');
         }
@@ -29,8 +29,7 @@ class AuthController extends Controller
         return back()->withErrors([
             'username' => 'Username not found.',
             'password' => 'Password is incorrect.'
-        ])-> onlyInput('username');
-
+        ])->onlyInput('username');
     }
 
     public function logout(Request $request): RedirectResponse
@@ -38,7 +37,7 @@ class AuthController extends Controller
         Auth::logout();
 
         $request->session()->invalidate();
-        
+
         $request->session()->regenerateToken();
 
         return redirect('/');
