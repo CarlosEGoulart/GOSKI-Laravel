@@ -1,4 +1,4 @@
-<header class='flex justify-between items-center px-5 py-3'>
+<header class='flex justify-between items-center shadow-2xs px-5 py-3 border-[#D9D9D9] border-b'>
     
     <div class='flex items-center'>
         <a href='/feed' class='flex items-center'> 
@@ -12,7 +12,7 @@
 
         <a href='#'> <img class='w-8 h-8' src="{{ asset('images/icons/bell.png') }}" alt="Notificações"></a>
 
-        <x-menu/>
+        <x-header.menu/>
     </div>
 
 </header>

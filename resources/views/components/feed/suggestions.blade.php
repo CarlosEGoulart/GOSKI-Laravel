@@ -1,3 +1,3 @@
 <div class='justify-center items-center flex flex-col gap-4 py-4'>
-    <h1> posts </h1>
+    <h1> suggestions </h1>
 </div>
