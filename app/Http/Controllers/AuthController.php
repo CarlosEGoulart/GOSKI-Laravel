@@ -16,7 +16,7 @@ class AuthController extends Controller
     public function authenticate(Request $request)
     {
         $credentials = $request->validate([
-            'name' => ['required', 'email'],
+            'username' => ['required'],
             'password' => ['required'] 
         ]);
 
@@ -27,7 +27,7 @@ class AuthController extends Controller
         }
 
         return back()->withErrors([
-            'email' => 'Email not found.',
+            'username' => 'Username not found.',
             'password' => 'Password is incorrect.'
         ])-> onlyInput('username');
 
