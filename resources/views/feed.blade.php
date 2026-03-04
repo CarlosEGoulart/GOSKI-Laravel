@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
 @section('content')
-    <div class="mx-auto mt-6 container">
+    <div class="mx-auto mt-6 w-full">
         <div class="flex space-x-6">
             <div class="w-3/12">
                 <x-feed.suggestions />
@@ -10,7 +10,7 @@
                 <x-feed.posts />
             </div>
             <div class="w-3/12">
-                <x-feed.resume :user="Auth::user()" />
+                <x-feed.resume />
             </div>
         </div>
     </div>

@@ -12,7 +12,7 @@
 
         <a href='#'> <img class='w-8 h-8' src="{{ asset('images/icons/bell.png') }}" alt="Notificações"></a>
 
-        <x-menu/>
+        <x-header.menu/>
     </div>
 
 </header>
