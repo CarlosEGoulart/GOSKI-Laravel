@@ -13,7 +13,7 @@
             </a>
         </div>
 
-        <a href="/login" class='font-bold text-2xl'>Faça seu login.</a>
+        <a href="/" class='font-bold text-2xl'>Faça seu login.</a>
     </header>
 
     <div class="flex justify-center">
