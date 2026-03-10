@@ -1,8 +1,8 @@
 @extends('layouts.public')
 
 @section('content')
-    <div class="mx-auto mt-6 w-full">
-        <div class="flex space-x-6">
+    <div class="mt-6 w-full">
+        <div class="flex gap-6 space-x-6">
             <div class="w-3/12">
                 <x-feed.suggestions />
             </div>
