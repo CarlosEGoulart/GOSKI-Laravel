@@ -51,11 +51,11 @@
                                     <img class="opacity-30 w-5 h-5" src="{{ asset('images/icons/icon.png') }}"
                                         alt="User Icon">
                                 </div>
-                                <input type="email" name="email" placeholder="Usuario"
-                                    value="{{ old('email', $user['email'] ?? '') }}"
+                                <input type="text" name="username" placeholder="Usuario"
+                                    value="{{ old('username', $user['username'] ?? '') }}"
                                     class="flex items-center bg-[#D9D9D9] py-2 border-none rounded-2xl w-full placeholder:text-black/30 text-center">
                             </div>
-                            @error('email')
+                            @error('username')
                                 <p class="text-red-500 text-xs">{{ $message }}</p>
                             @enderror
 
