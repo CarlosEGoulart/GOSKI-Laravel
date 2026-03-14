@@ -21,7 +21,7 @@ return new class extends Migration
             $table->rememberToken();
         });
 
-        Schema::create('password_reset_tokens', function (Blueprint $table) {
+        Schema::create('laravel.password_reset_tokens', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('token')->unique();
@@ -31,7 +31,7 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
 
-        Schema::create('sessions', function (Blueprint $table) {
+        Schema::create('laravel.sessions', function (Blueprint $table) {
             $table->string('id')->primary();
             $table->foreignId('user_id')->nullable()->index();
             $table->string('ip_address', 45)->nullable();
@@ -48,7 +48,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('users');
-        Schema::dropIfExists('password_reset_tokens');
-        Schema::dropIfExists('sessions');
+        Schema::dropIfExists('laravel.password_reset_tokens');
+        Schema::dropIfExists('laravel.sessions');
     }
 };
