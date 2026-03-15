@@ -17,7 +17,7 @@ class AuthController extends Controller
     {
         $credentials = $request->validate([
             'username' => ['required'],
-            'password' => ['required'] 
+            'password' => ['required']
         ]);
 
         if(Auth::attempt($credentials)){
@@ -29,8 +29,7 @@ class AuthController extends Controller
         return back()->withErrors([
             'username' => 'Username not found.',
             'password' => 'Password is incorrect.'
-        ])-> onlyInput('username');
-
+        ])->onlyInput('username');
     }
 
     public function logout(Request $request): RedirectResponse
@@ -38,9 +37,9 @@ class AuthController extends Controller
         Auth::logout();
 
         $request->session()->invalidate();
-        
+
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect()->route('landingPage');
     }
 }
