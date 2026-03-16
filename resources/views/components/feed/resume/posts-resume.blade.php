@@ -1,14 +1,23 @@
 <div class="flex items-center justify-center">
-    <div class='grid grid-cols-3 grid-rows-3 gap-4'>
-        <div class='flex justify-center items-center bg-[#B9B9B9] h-35 w-35 rounded-md shadow-xl'>Post</div>
-        <div class='flex justify-center items-center bg-[#B9B9B9] h-35 w-35 rounded-md shadow-xl'>Post</div>
-        <div class='flex justify-center items-center bg-[#B9B9B9] h-35 w-35 rounded-md shadow-xl'>Post</div>
-        <div class='flex justify-center items-center bg-[#B9B9B9] h-35 w-35 rounded-md shadow-xl'>Post</div>
-        <div class='flex justify-center items-center bg-[#B9B9B9] h-35 w-35 rounded-md shadow-xl'>Post</div>
-        <div class='flex justify-center items-center bg-[#B9B9B9] h-35 w-35 rounded-md shadow-xl'>Post</div>
-        <div class='flex justify-center items-center bg-[#B9B9B9] h-35 w-35 rounded-md shadow-xl'>Post</div>
-        <div class='flex justify-center items-center bg-[#B9B9B9] h-35 w-35 rounded-md shadow-xl'>Post</div>
-        <div class='flex justify-center items-center bg-[#B9B9B9] h-35 w-35 rounded-md shadow-xl'>Post</div>
+    <div class='grid auto-rows-auto grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3'>
+        <div class='flex aspect-square w-full items-center justify-center rounded-md bg-[#B9B9B9] shadow-xl'>
+            Post</div>
+        <div class='flex aspect-square w-full items-center justify-center rounded-md bg-[#B9B9B9] shadow-xl'>
+            Post</div>
+        <div class='flex aspect-square w-full items-center justify-center rounded-md bg-[#B9B9B9] shadow-xl'>
+            Post</div>
+        <div class='flex aspect-square w-full items-center justify-center rounded-md bg-[#B9B9B9] shadow-xl'>
+            Post</div>
+        <div class='flex aspect-square w-full items-center justify-center rounded-md bg-[#B9B9B9] shadow-xl'>
+            Post</div>
+        <div class='flex aspect-square w-full items-center justify-center rounded-md bg-[#B9B9B9] shadow-xl'>
+            Post</div>
+        <div class='flex aspect-square w-full items-center justify-center rounded-md bg-[#B9B9B9] shadow-xl'>
+            Post</div>
+        <div class='flex aspect-square w-full items-center justify-center rounded-md bg-[#B9B9B9] shadow-xl'>
+            Post</div>
+        <div class='flex aspect-square w-full items-center justify-center rounded-md bg-[#B9B9B9] shadow-xl'>
+            Post</div>
     </div>
 
 </div>

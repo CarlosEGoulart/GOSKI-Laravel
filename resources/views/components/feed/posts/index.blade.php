@@ -12,7 +12,7 @@
 <div class='flex flex-row justify-center py-4'>
     <div class='flex flex-col justify-center items-center gap-4'>
         <div class="flex justify-center items-center">
-            <div class='flex justify-center items-center bg-[#B9B9B9] shadow-md rounded-md w-4xl h-128'>Post</div>
+            <div class='flex justify-center items-center bg-[#B9B9B9] shadow-md rounded-md w-full max-w-4xl aspect-video'>Post</div>
             {{-- Futuramente vai ser a imagem do post --}}
         </div>
     </div>
