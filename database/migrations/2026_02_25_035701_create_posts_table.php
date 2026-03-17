@@ -13,13 +13,12 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
+            $table->foreignUuid('user_id')->constrained('users')->onDelete('cascade');
             $table->text('description');
             $table->string('image_url');
             $table->boolean('is_nsfw')->default(false);
-            $table->string('moderation_status');
+            $table->string('moderation_status')->default('pending'); 
             $table->timestamps();
-            
-            $table->foreignId('user_id')->constrained()->unique()->onDelete('cascade');
         });
     }
     

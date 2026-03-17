@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
+use App\Models\User as User;
 
 class AuthController extends Controller
 {
@@ -16,20 +17,37 @@ class AuthController extends Controller
     public function authenticate(Request $request)
     {
         $credentials = $request->validate([
-            'username' => ['required'],
+            'email' => ['required', 'email'],
             'password' => ['required']
         ]);
 
-        if(Auth::attempt($credentials)){
-            $request->session()->regenerate();
+        $supabase = app('supabase');
+        
+        $response = $supabase->auth()->signInWithPassword([
+            'email'=>$credentials('email'),
+            'password'=>$credentials('password')
+        ]);
+
+        if($response->getError()){
+            return back()->withErrors([
+                'email' => 'Email not found.',
+                'password' => 'Password is incorrect.'
+            ])->onlyInput('email');
+        }
+
+        $supabaseUser = $response->getUser();
+        $user = User::where('id', $supabaseUser->id)->first();
+
+        if($user){
+            Auth::login($user);
+            $request->session()->regenerateToken();
 
             return redirect()->intended('feed');
         }
 
         return back()->withErrors([
-            'username' => 'Username not found.',
-            'password' => 'Password is incorrect.'
-        ])->onlyInput('username');
+            'email' => 'User not found.'
+        ]);
     }
 
     public function logout(Request $request): RedirectResponse
@@ -43,3 +61,4 @@ class AuthController extends Controller
         return redirect()->route('landingPage');
     }
 }
+
