@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use App\Models\User as User;
+use App\Services\SupabaseAuthService;
 
 class AuthController extends Controller
 {
@@ -14,39 +15,40 @@ class AuthController extends Controller
         return view('feed');
     }
 
-    public function authenticate(Request $request)
+    public function authenticate(Request $request, SupabaseAuthService $supabase)
     {
-        $credentials = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required']
+
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
         ]);
 
-        $supabase = app('supabase');
-        
-        $response = $supabase->auth()->signInWithPassword([
-            'email'=>$credentials('email'),
-            'password'=>$credentials('password')
-        ]);
+        $response = $supabase->signIn(
+            $request->email, 
+            $request->password
+        );
 
-        if($response->getError()){
-            return back()->withErrors([
-                'email' => 'Email not found.',
-                'password' => 'Password is incorrect.'
-            ])->onlyInput('email');
+        if (isset($response['error_code'])) {
+            $message = $response['error_code'] === 'email_not_confirmed' 
+            ? 'Por favor, confirme seu e-mail antes de logar.' 
+            : 'Credenciais inválidas.';
+
+            return back()->withErrors(['email' => $message])->withInput();
         }
 
-        $supabaseUser = $response->getUser();
-        $user = User::where('id', $supabaseUser->id)->first();
+        $supabaseUser = $supabase->getUser($response['access_token']);
+
+        $user = User::where('id', $supabaseUser['id'] ?? null)->first();
 
         if($user){
             Auth::login($user);
-            $request->session()->regenerateToken();
+            $request->session()->regenerate();
 
             return redirect()->intended('feed');
         }
 
         return back()->withErrors([
-            'email' => 'User not found.'
+            'email' => 'Email não encontrado.'
         ]);
     }
 
@@ -61,4 +63,5 @@ class AuthController extends Controller
         return redirect()->route('landingPage');
     }
 }
+
 

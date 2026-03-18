@@ -97,6 +97,7 @@ return [
             'search_path' => 'public, laravel',
             'schema' => 'laravel',
             'sslmode' => env('DB_SSLMODE', 'prefer'),
+            'prepared' => false,
         ],
 
         'sqlsrv' => [

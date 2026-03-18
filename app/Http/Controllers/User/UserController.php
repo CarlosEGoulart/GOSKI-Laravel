@@ -4,23 +4,24 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\RegisterUserRequest;
+use App\Services\SupabaseAuthService;
 
 class UserController extends Controller
 {
-    public function register(RegisterUserRequest $request)
+    public function register(RegisterUserRequest $request, SupabaseAuthService $supabase)
     {
-        $supabase = app('supabase');
+        $response = $supabase->signUp(
+            $request->email, 
+            $request->password,
+            $request->username
+        );
 
-        $response = $supabase->auth()->signUp([
-            'username' => $request->username,
-            'email' => $request->email,
-            'password' => $request->password,
-        ]);
-
-        if ($response->getError()) {
-            return back()->withErrors(['message' => 'Registration failed']);
+        if (isset($response['error_description']) || isset($response['error'])) {
+            return back()->withInput()->withErrors([
+                'supabase' => $response['error_description'] ?? $response['error']['message']
+            ]);
         }
-
-        return redirect('feed');
+       
+        return redirect()->route('landingPage')->with('success', 'Conta criada!');
     }
 }

@@ -4,51 +4,51 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use App\Services\SupabaseAuthService;
 
 class UserSeeder extends Seeder
 {
+    protected $supabase;
+
+    public function __construct(SupabaseAuthService $supabase)
+    {
+        $this->supabase = $supabase;
+    }
+
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        $supabase = app('supabase');
-
-        $this->createSupabaseUser($supabase, [
+        $this->createSupabaseUser([
             'email' => 'admin@teste.com',
             'password' => 'SenhaSegura123',
             'username' => 'AdminMaster'
         ]);
 
-        User::factory(2)->make()->each(function($userFake) use ($supabase){
-            $this->createSupabaseUser($supabase, [
+        User::factory(10)->make()->each(function ($userFake) {
+            $this->createSupabaseUser([
                 'email' => $userFake->email,
                 'password' => 'password123',
-                'username' => $userFake->username,
-                'profile_photo_url' => $userFake->profile_photo_url
+                'username' => $userFake->username ?? 'user_' . rand(1, 999),
             ]);
         });
     }
 
-
-    private function createSupabaseUser($supabase, array $data)
+    private function createSupabaseUser(array $data)
     {
-        $response = $supabase->auth()->admin()->createUser([
-            'email' => $data['email'],
-            'password' => $data['password'],
-            'email_confirm' => true,
-        ]);
+        $response = $this->supabase->signUp(
+            $data['email'],
+            $data['password'],
+            $data['username']
+        );
 
-        if ($response->getError()) {
-            $this->command->error("Erro ao criar {$data['email']}: " . $response->getError()->getMessage());
+        if (isset($response['error_code']) || isset($response['error'])) {
+            $error = $response['msg'] ?? $response['error']['message'] ?? 'Erro desconhecido';
+            $this->command->error("Falha: {$data['email']} -> " . $error);
             return;
         }
 
-        $supabaseUser = $response->getUser();
-        User::where('id', $supabaseUser->id)->update([
-            'username' => $data['username'],
-            'profile_photo_url' => $data['profile_photo_url'] ?? null,
-        ]);
-
+        $this->command->info("Sucesso: Usuário {$data['username']} criado no Supabase!");
     }
 }
