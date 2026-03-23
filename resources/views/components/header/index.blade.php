@@ -1,18 +1,28 @@
-<header class='flex justify-between items-center shadow-2xs px-5 py-3 border-[#D9D9D9] border-b'>
-    
-    <div class='flex items-center'>
-        <a href='/' class='flex items-center'> 
-            <img class='w-20 h-20' src="{{ asset('images/logo.svg') }}" alt="GoskiLogo">
-            <h1 class='ml-2 text-5xl'>{{ env('APP_NAME') }}</h1>
-        </a>
+<header class="top-0 z-50 sticky backdrop-blur-lg border-[#D9D9D9] border-b">
+    <div class="mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+        <div class="flex justify-between items-center h-24"> 
+            <div class='flex items-center'>
+                <a href='/admin' class='flex items-center'> 
+                    <img class='w-auto h-16' src="{{ asset('images/logo.svg') }}" alt="GoskiLogo">
+                    <h1 class='ml-3 font-bold text-5xl'>{{ env('APP_NAME') }}</h1>
+                </a>
+            </div>
+            
+            <div class="flex items-center gap-5"> 
+                <form action="" method="POST" class="flex items-center">
+                    <button type="submit" class="hover:opacity-80 transition-opacity cursor-pointer">
+                        <img class="w-8 h-8" src="{{ asset('images/icons/add.png') }}" alt="NovoPost">
+                    </button>
+                </form>
+
+                <form action="" method="POST" class="flex items-center">
+                    <button type="submit" class="hover:opacity-80 transition-opacity cursor-pointer">
+                        <img class="w-8 h-8" src="{{ asset('images/icons/bell.png') }}" alt="Notificacoes">
+                    </button>
+                </form>
+
+                <x-header.menu />
+            </div>
+        </div>
     </div>
-
-    <div class='flex justify-between gap-5'>
-        <a href='/create'> <img class='w-10 h-10' src="{{ asset('images/icons/add.png') }} alt="Adicionar"></a>
-
-        <a href='/notifications'> <img class='w-10 h-10' src="{{ asset('images/icons/bell.png') }} alt="Notificações"></a>
-
-        <x-header.menu/>
-    </div>
-
 </header>
