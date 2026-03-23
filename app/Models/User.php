@@ -13,27 +13,16 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
-    /**
-     * Set to false because Supabase uses UUIDs, not auto-incrementing integers.
-     */
     protected $fillable = [
         'username',
         'email',
         'password',
-        'profile_photo_url'
     ];
 
     /**
      * The data type of the primary key.
      */
     protected $keyType = 'string';
-
-    protected $fillable = [
-        'id',
-        'username',
-        'email',
-        'profile_photo_url'
-    ];
 
     protected $hidden = [
         'remember_token',

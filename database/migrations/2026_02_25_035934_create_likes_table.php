@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -19,6 +20,14 @@ return new class extends Migration
 
             $table->unique(['user_id', 'post_id']);
         });
+
+        DB::unprepared('
+            ALTER TABLE public.likes ENABLE ROW LEVEL SECURITY;
+
+            CREATE POLICY "Likes visíveis por todos" ON public.likes FOR SELECT USING (true);
+            CREATE POLICY "Usuários dão like" ON public.likes FOR INSERT WITH CHECK (auth.uid() = user_id);
+            CREATE POLICY "Usuários removem like" ON public.likes FOR DELETE USING (auth.uid() = user_id);
+        ');
     }
 
     /**

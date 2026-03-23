@@ -16,7 +16,6 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->string('username')->unique();
             $table->string('email')->unique();
-            $table->string('password');
             $table->string('profile_photo_url')->nullable();
             $table->timestamps();
             $table->rememberToken();
@@ -26,17 +25,29 @@ return new class extends Migration
 
         DB::unprepared('
             CREATE OR REPLACE FUNCTION public.handle_new_user()
-            RETURNS trigger AS $$
+            RETURNS trigger 
+            LANGUAGE plpgsql 
+            SECURITY DEFINER SET search_path = public
+            AS $$
             BEGIN
                 INSERT INTO public.users (id, email, username, created_at, updated_at)
-                VALUES (new.id, new.email, split_part(new.email, \'@\', 1), now(), now());
+                VALUES (
+                    new.id, 
+                    new.email, 
+                    (new.raw_user_meta_data->>\'username\'),
+                    now(), 
+                    now()
+                );
                 RETURN new;
             END;
-            $$ LANGUAGE plpgsql SECURITY DEFINER;
+            $$;
+        ');
 
-            CREATE OR REPLACE TRIGGER on_auth_user_created
-            AFTER INSERT ON auth.users
-            FOR EACH ROW EXECUTE PROCEDURE public.handle_new_user();
+        DB::unprepared('
+            ALTER TABLE public.users ENABLE ROW LEVEL SECURITY;
+
+            CREATE POLICY "Perfis visíveis por todos" ON public.users FOR SELECT USING (true);
+            CREATE POLICY "Usuários editam o próprio perfil" ON public.users FOR UPDATE USING (auth.uid() = id);
         ');
 
         Schema::create('laravel.password_reset_tokens', function (Blueprint $table) {

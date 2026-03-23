@@ -5,11 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
-<<<<<<< HEAD
 use App\Models\User as User;
 use App\Services\SupabaseAuthService;
-=======
->>>>>>> cffd9db (Feed Setup)
 
 class AuthController extends Controller
 {
@@ -47,18 +44,13 @@ class AuthController extends Controller
             Auth::login($user);
             $request->session()->regenerate();
 
-            return redirect()->intended('landing');
+            return redirect()->intended('feed');
         }
 
         return back()->withErrors([
-<<<<<<< HEAD
-            'email' => 'Email não encontrado.'
-        ]);
-=======
-            'username' => 'Username not found.',
+            'email' => 'Email not found.',
             'password' => 'Password is incorrect.'
-        ])->onlyInput('username');
->>>>>>> cffd9db (Feed Setup)
+        ])->onlyInput('email');
     }
 
     public function logout(Request $request): RedirectResponse
