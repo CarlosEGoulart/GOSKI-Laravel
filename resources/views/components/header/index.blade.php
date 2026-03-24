@@ -10,13 +10,13 @@
             
             <div class="flex items-center gap-5"> 
                 <form action="" method="POST" class="flex items-center">
-                    <button type="submit" class="hover:opacity-80 transition-opacity cursor-pointer">
+                    <button type="submit" class="hover:opacity-20 transition-opacity cursor-pointer">
                         <img class="w-8 h-8" src="{{ asset('images/icons/add.png') }}" alt="NovoPost">
                     </button>
                 </form>
 
                 <form action="" method="POST" class="flex items-center">
-                    <button type="submit" class="hover:opacity-80 transition-opacity cursor-pointer">
+                    <button type="submit" class="hover:opacity-20 transition-opacity cursor-pointer">
                         <img class="w-8 h-8" src="{{ asset('images/icons/bell.png') }}" alt="Notificacoes">
                     </button>
                 </form>
